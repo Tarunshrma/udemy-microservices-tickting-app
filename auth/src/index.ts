@@ -1,8 +1,8 @@
 import express from 'express'
-import bodyParser from 'body-parser'
+import { json } from 'body-parser'
 
 const app = express()
-app.use(bodyParser.json());
+app.use(json());
 
 
 app.listen(3000, () => {

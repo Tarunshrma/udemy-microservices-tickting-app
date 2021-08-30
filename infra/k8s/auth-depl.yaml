@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quth-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth
+  template:
+    metadata:
+      labels:
+        app: auth
+    spec:
+      containers:
+      - name: auth
+        image: tarunshrma/auth:latest
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name:  auth-clusterip-srv
+spec:
+  selector:
+    app:  auth
+  type:  ClusterIP
+  ports:
+  - name:  auth
+    port:  3000
+    targetPort:  3000
