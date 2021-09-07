@@ -5,10 +5,12 @@ deploy:
     manifests:
       - ./infra/k8s/*
 build:
-  local:
-    push: false
+  # local:
+  #   push: false
+  googleCloudBuild: 
+    projectId: thinking-league-324511  
   artifacts:
-    - image: tarunshrma/auth
+    - image: us.gcr.io/thinking-league-324511/auth
       context: auth
       docker:
         dockerfile: Dockerfile

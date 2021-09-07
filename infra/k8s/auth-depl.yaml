@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: auth
-        image: tarunshrma/auth:latest
+        image: us.gcr.io/thinking-league-324511/auth
 ---
 kind: Service
 apiVersion: v1
