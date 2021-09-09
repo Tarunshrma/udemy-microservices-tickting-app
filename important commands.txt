@@ -1,0 +1,3 @@
+Check current context:
+kubectl config current-context
+
