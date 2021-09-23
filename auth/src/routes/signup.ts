@@ -10,11 +10,10 @@ body('password').isLength({ min: 5, max: 20 }),
     
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-      
+      throw new Error("Invalid email or password")
     }
 
-    res.send('User created.')
+    throw new Error("Invalid DB Connection")
 })
 
 export {router as SignupUserRoute}
