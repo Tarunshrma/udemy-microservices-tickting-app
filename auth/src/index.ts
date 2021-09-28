@@ -18,13 +18,11 @@ app.use(SigninUserRoute);
 app.use(SignoutUserRoute);
 app.use(CurrentUserRoute);
 
-app.all('*', async ()=>{
+app.all('*', async (req,res)=>{
     throw new NotFoundError();
 })
 
 app.use(errorHandler);
-
-
 
 app.listen(3000, () => {
     console.log("Listning at port 3000");
