@@ -11,8 +11,23 @@ import { errorHandler } from './middleware/error-handler'
 import { NotFoundError } from './errors/not-found-error'
 import mongoose from 'mongoose'
 
+//This will allow storing jwt token to cookies. This is hard requirement in case of server side rendering of next.js
+import cookieSession from 'cookie-session'
+
 const app = express()
+//Set the proxy allow as we are reaching via ingress 
+app.set('trust proxy', true);
+
 app.use(json())
+
+//set up the cookie session, signed false to avoid encryption; secure = true to allow only https communication
+app.use(
+  cookieSession(
+    {
+      signed: false,
+      secure: true
+    })
+);
 
 app.use(SignupUserRoute)
 app.use(SigninUserRoute)
