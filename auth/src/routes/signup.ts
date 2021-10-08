@@ -37,7 +37,7 @@ async (req: express.Request, res: express.Response) =>{
     const jwtToken = jwt.sign({
       id:doc.id,
       email: doc.username
-    },'asdf');
+    }, process.env.JWTKey!);
 
     req.session = {
         jwt : jwtToken

@@ -42,6 +42,11 @@ app.use(errorHandler)
 
 const start = async () => {
   try {
+
+    if(!process.env.JWTKey){
+      throw new Error('JWTKey Environment variable not set');
+    }
+
     await mongoose.connect('mongodb://auth-mongo-srv:27017/auth')
     console.log('Connected to database...')
   } catch (err) {

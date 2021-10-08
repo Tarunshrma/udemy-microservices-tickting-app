@@ -15,6 +15,12 @@ spec:
       containers:
       - name: auth
         image: us.gcr.io/thinking-league-324511/auth
+        env:
+          - name: JWTKey
+            valueFrom:
+             secretKeyRef:
+               name: jwt-key
+               key: JWT_KEY
 ---
 kind: Service
 apiVersion: v1
